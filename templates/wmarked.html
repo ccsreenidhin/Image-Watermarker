@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+
+{% load staticfiles %}
+
+
+{% block jumbotron %}
+
+
+	
+        <div class="container">
+            <div class="contr">
+		<h1>Hi....  {{ user }}</h1>
+            	<h2>Your Watermarked Images</h2>		
+	    </div>
+	</div>
+	
+	<div class="container">
+		{% for img in watermkd %}
+		{% if img.dupimage %}
+		<a href = "{{ img.dupimage.url }}"><img src="{{ img.dupimage.url }}" width="800" height="600"></a>
+		{% endif %}
+		{% endfor %}
+	</div>
+
+        </div>
+    
+
+
+      
+{% endblock %}

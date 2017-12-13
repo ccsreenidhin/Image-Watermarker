@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+
+<meta charset="UTF-8"/>
+
+<title>Water Marker</title>
+
+<meta name="description" content="Onepage Multipurpose Bootstrap HTML Template">
+
+<meta name="author" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/theme.css' %}">
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<!--wrapper start-->
+
+	<header>
+
+		<div class="banner row" id="banner">
+		<div class="parallax text-center" style="background-image: url(http://wowthemes.net/demo/leroy/img/dummy1.jpg);">
+			<div class="parallax-pattern-overlay">
+				<div class="container text-center" style="height:600px;padding-top:170px;">
+					<a href="#"><img id="site-title" class=" wow fadeInDown" wow-data-delay="0.0s" wow-data-duration="0.9s" src="{% static 'img/logo.png' %}" alt="logo"/></a>
+					<h2 class="intro wow zoomIn" wow-data-delay="0.4s" wow-data-duration="0.9s">DJANGO WATERMARKER</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+<div class="menu">
+		<div class="navbar-wrapper">
+			<div class="container">
+				<div class="navwrapper">
+					<div class="navbar navbar-inverse navbar-static-top">
+						<div class="container">
+							<div class="navArea">
+
+									<ul class="nav navbar-nav centralign">
+										<li class="menuItem active"><a href="/">Home</a></li>
+										<li class="menuItem"><a href="/about/">About Us</a></li>
+										<li class="menuItem"><a href="/sample/">Gallery</a></li>
+                    {% if request.user.is_authenticated %}
+										<li class="menuItem"><a href="/gallery/"> Uploaded Images</a></li>
+										<li class="menuItem"><a href="/wmarked/">WaterMarked Images</a></li>
+				 						<li class="menuItem"><a href="/upload/">Upload Image</a></li>
+										<li class="menuItem"><a href="{% url 'auth_logout' %}">LOGOUT</a></li>
+
+                    {% else %}
+										<li class="menuItem"><a href="{% url 'auth_login' %}">LOGIN &raquo;</a></li>
+                    <li class="menuItem"><a href="{% url 'registration_register' %}">REGISTER &raquo;</a></li>
+   									{% endif %}
+									</ul>
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+
+
+
+{% block jumbotron %}
+
+
+{% endblock %}
+<section class="footer" id="footer">
+	<p class="text-center">
+		<a href="#wrapper" class="gototop"><i class="fa fa-angle-double-up fa-2x"></i></a>
+	</p>
+	<div class="container">
+		<ul>
+			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+			<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			<li><a href="#"><i class="fa fa-flickr"></i></a></li>
+		</ul>
+		<p>
+			&copy; Copyright Your Website<br>
+			 Theme by <a href="http://www.wowthemes.net">WowThemes.Net</a>
+		</p>
+	</div>
+	</section>
+
+<!--Javascripts-->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/modernizr.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/menustick.js' %}"></script>
+<script src="{% static 'js/parallax.js' %}"></script>
+<script src="{% static 'js/easing.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/masonry.js' %}"></script>
+<script src="{% static 'js/imgloaded.js' %}"></script>
+<script src="{% static 'js/classie.js' %}"></script>
+<script src="{% static 'js/colorfinder.js' %}"></script>
+<script src="{% static 'js/gridscroll.js' %}"></script>
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+
+<script type="text/javascript">
+jQuery(function($) {
+$(document).ready( function() {
+  //enabling stickUp on the '.navbar-wrapper' class
+	$('.navbar-wrapper').stickUp({
+		parts: {
+		  0: 'banner',
+		  1: 'aboutus',
+		  2: 'specialties',
+		  3: 'gallery',
+		  4: 'feedback',
+		  5: 'contact'
+		},
+		itemClass: 'menuItem',
+		itemHover: 'active',
+		topMargin: 'auto'
+		});
+	});
+});
+</script>
+</body>
+</html>

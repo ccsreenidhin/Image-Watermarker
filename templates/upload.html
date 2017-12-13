@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block jumbotron %}
+
+
+
+      
+        <div class="container">
+            <div class="contr">
+		<h1>Hi....  {{ user }}</h1>
+            	<h2>Upload Files To Be Watermarked</h2><br/>
+
+		<h2>Select File,<br/> Enter the text for watermarking,<br/> 
+		Give X and Y position,<br/> Enter the color,<br/> Enter fontsize, 
+		<br/>Press Save<br/> You are Done!!!</h2>
+		
+	    </div>
+
+            <div class="upload_form_cont">
+                <form id="file" name="file" action="." method="post" name ="file" enctype="multipart/form-data">
+                    {% csrf_token %}
+ 
+            	    {{ form.as_p }}
+
+		    <button type="submit" class="save btn btn-default">Save</button>
+                </form>
+            </div>
+
+        </div>
+
+
+
+      
+{% endblock %}

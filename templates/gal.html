@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block jumbotron %}
+	<div class="container">
+            <div class="contr">
+		<h1>View Sample Images</h1>
+            			
+	    </div>
+	</div>
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+	{% if document.galimage.url %}
+                  <img class="padstyle" src="{{ document.galimage.url }}" width="600" height="400">
+	{% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+
+
+{% endblock %}      
+   
