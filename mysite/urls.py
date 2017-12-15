@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from blog.views import index, upload, gallery, about, wmarked, gal
+from blog.views import index, upload, gallery, about, wmarked
 
 
 urlpatterns = [
@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^about/$', about, name='about'),
     url(r'^upload/$', upload, name='upload'),
     url(r'^gallery/$', gallery, name='gallery'),
-    url(r'^sample/$', gal, name='sample'),
     url(r'^wmarked/$', wmarked, name='wmarked'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
    

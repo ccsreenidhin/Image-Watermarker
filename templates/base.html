@@ -53,30 +53,29 @@
 					<div class="navbar navbar-inverse navbar-static-top">
 						<div class="container">
 							<div class="navArea">
-
+								
 									<ul class="nav navbar-nav centralign">
 										<li class="menuItem active"><a href="/">Home</a></li>
 										<li class="menuItem"><a href="/about/">About Us</a></li>
-										<li class="menuItem"><a href="/sample/">Gallery</a></li>
                     {% if request.user.is_authenticated %}
-										<li class="menuItem"><a href="/gallery/"> Uploaded Images</a></li>
-										<li class="menuItem"><a href="/wmarked/">WaterMarked Images</a></li>
-				 						<li class="menuItem"><a href="/upload/">Upload Image</a></li>
+										<li class="menuItem"><a href="/gallery/"> Uploaded Image Gallery</a></li>
+										<li class="menuItem"><a href="/wmarked/">Water Marked Image Gallery</a></li>
+										
+				 						<li class="nav-item px-lg-4"><a class="nav-link text-uppercase text-expanded" href="/upload/">Upload Image</a></li>
 										<li class="menuItem"><a href="{% url 'auth_logout' %}">LOGOUT</a></li>
-
+					
                     {% else %}
 										<li class="menuItem"><a href="{% url 'auth_login' %}">LOGIN &raquo;</a></li>
                     <li class="menuItem"><a href="{% url 'registration_register' %}">REGISTER &raquo;</a></li>
    									{% endif %}
-									</ul>
-								</div>
-
+									</ul>								</div>
+						
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </header>
 
 
@@ -106,7 +105,7 @@
 		</p>
 	</div>
 	</section>
-
+        
 <!--Javascripts-->
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/modernizr.js' %}"></script>
