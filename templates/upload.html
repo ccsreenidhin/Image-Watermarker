@@ -1,37 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block navbar %} {% include 'navbar.html' %} {% endblock %} {% block main %}
+<div class="container">
 
-{% load staticfiles %}
+  <div class="row">
 
+    <div class="col-lg-3">
+      <span class="d-none d-lg-block text-center mt-4">
+      </span>
+      <h1 class="text-center my-4">{{ user }}</h1>
+      <div class="list-group">
+        <a href="{% url 'gallery' %}" class="list-group-item submit">Gallery</a>
+        <a href="{% url 'wmarked' %}" class="list-group-item submit">WaterMarked</a>
+        <a href="{% url 'upload' %}" class="list-group-item submit">Upload Images</a>
+      </div>
+    </div>
 
-{% block jumbotron %}
+    <div class="col-lg-9">
+      <div class="card mt-4 gray text-center">
+        <h3>Upload Files To Be Watermarked</h3><br/>
+        <p>Select File, Enter the text for watermarking,Give X and Y position,<br/> Enter the color, Enter fontsize,Press Save You are Done!!!</p>
 
-
-
-      
-        <div class="container">
-            <div class="contr">
-		<h1>Hi....  {{ user }}</h1>
-            	<h2>Upload Files To Be Watermarked</h2><br/>
-
-		<h2>Select File,<br/> Enter the text for watermarking,<br/> 
-		Give X and Y position,<br/> Enter the color,<br/> Enter fontsize, 
-		<br/>Press Save<br/> You are Done!!!</h2>
-		
-	    </div>
-
-            <div class="upload_form_cont">
-                <form id="file" name="file" action="." method="post" name ="file" enctype="multipart/form-data">
-                    {% csrf_token %}
- 
-            	    {{ form.as_p }}
-
-		    <button type="submit" class="save btn btn-default">Save</button>
-                </form>
-            </div>
-
+        <div class="upload_form_cont">
+          <form id="file" name="file" action="." method="post" name="file" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="{{ form.text.id_for_label }}">Text</label>
+                <input type="text" class="form-control" id="id_{{ form.text.id_for_label }}" name="{{ form.text.html_name }}" placeholder=" Enter text">
+              </div>
+              <div class="form-group">
+                <label for="{{ form.x.id_for_label }}">X-Position</label>
+                <input type="number" class="form-control" id="id_{{ form.x.id_for_label }}" name="{{ form.x.html_name }}" placeholder="0">
+              </div>
+              <div class="form-group">
+                <label for="{{ form.y.id_for_label }}">Y-Position</label>
+                <input type="number" class="form-control" id="id_{{ form.y.id_for_label }}" name="{{ form.y.html_name }}" placeholder="0">
+              </div>
+              <div class="form-group">
+                <label for="{{ form.color.id_for_label }}">Colour</label>
+                <input type="text" class="form-control" id="id_{{ form.color.id_for_label }}" name="{{ form.color.html_name }}" placeholder=" Enter color name">
+              </div>
+              <div class="form-group">
+                <label for="{{ form.fontsize.id_for_label }}">Fontsize</label>
+                <input type="text" class="form-control" id="id_{{ form.fontsize.id_for_label }}" name="{{ form.fontsize.html_name }}" placeholder=" Enter fontsize">
+              </div>
+              <div class="form-group">
+					    	<label for="{{ form.email.id_for_label }}">Email Address</label>
+					    	<input type="email" class="form-control" id="id_{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" placeholder=" Enter Email id">
+					  	</div>
+              <div class="form-group">
+                <label for="{{ form.orimage.id_for_label }}">Upload Your Image</label><br/>
+                <input type="file" name="{{ form.orimage.html_name }}" accept="image/*" />
+              </div>
+              <button type="submit" class="save btn btn-default">Save</button>
+          </form>
+          </div>
         </div>
+      </div>
 
-
-
-      
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% load static %}
+     	{% block navbar %}
+                {% include 'navbar.html' %}
+         {% endblock %}
 
-
-{% block jumbotron %}
-	<div class="container">
-            <div class="contr">
-		<h1>View Sample Images</h1>
+{% block main %}
+	<div class="container text-center">
+            <div class="contr text-center">
+		<h3>View Sample Images</h3>
             			
 	    </div>
-	</div>
+	
     {% if documents %}
         <ul>
         {% for document in documents %}
@@ -21,8 +23,9 @@
     {% else %}
         <p>No documents.</p>
     {% endif %}
-
-
-
+    </div>
 {% endblock %}      
-   
+
+{% block logger %}
+    {% include 'registration/loger.html' %}
+{% endblock %}

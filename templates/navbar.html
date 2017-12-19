@@ -1,43 +1,28 @@
-{% load staticfiles %}
-	<div class="banner row" id="banner">		
-		<div class="parallax text-center" style="background-image: url(http://wowthemes.net/demo/leroy/img/dummy1.jpg);">
-			<div class="parallax-pattern-overlay">
-				<div class="container text-center" style="height:600px;padding-top:170px;">
-					<a href="#"><img id="site-title" class=" wow fadeInDown" wow-data-delay="0.0s" wow-data-duration="0.9s" src="{% static 'img/logo.png' %}" alt="logo"/></a>
-					<h2 class="intro wow zoomIn" wow-data-delay="0.4s" wow-data-duration="0.9s">Catering & Special Events</h2>
-				</div>
-			</div>
-		</div>
-	</div>	
-	<div class="menu">
-		<div class="navbar-wrapper">
-			<div class="container">
-				<div class="navwrapper">
-					<div class="navbar navbar-inverse navbar-static-top">
-						<div class="container">
-							<div class="navArea">
-								<div class="navbar-collapse collapse">
-									<ul class="nav navbar-nav">
-										<li class="menuItem active"><a href="/">Home</a></li>
-										<li class="menuItem"><a href="/about/">About Us</a></li>
-                                                                                {% if request.user.is_authenticated %}
-										<li class="menuItem"><a href="/gallery/">Events Gallery</a></li>
-										<li class="menuItem"><a href="{% url 'auth_logout' %}">LOGOUT</a></li>
-<li class="nav-item px-lg-4">
-                 <a class="nav-link text-uppercase text-expanded" href="/">Hiii {{ user }}     </a> 
+<nav class="navbar navbar-expand-lg navbar-dark orange">
+      <div class="container">
+        <a class="navbar-brand" href="#">SweetTunes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
             </li>
-                                                                                {% else %}
-										<li class="menuItem"><a href="{% url 'auth_login' %}">LOGIN &raquo;</a></li>
-                                                                                <li class="menuItem"><a href="{% url 'registration_register' %}">REGISTER &raquo;</a></li>
-   {% endif %}
-									</ul> 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
-	</header>
-	
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sample' %}">Gallery</a>
+            </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery' %}">Account</a>
+          </li>
+          {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>

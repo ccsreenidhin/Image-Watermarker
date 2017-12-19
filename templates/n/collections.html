@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block main %}
+ <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+        <span class="d-none d-lg-block text-center mt-4">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ pics.picture.url }}" alt="">
+      </span>
+        <h1 class="text-center my-4">{{ user.username }}</h1>
+        <ul class="">
+	        <li><h6>Name :</h6>
+	        {{ pics.fullname }}</li>
+	        <li><h6>Favourite Music :</h6>
+	        {{ pics.favourite_music }}</li>
+	        <li><h6>About :</h6>
+	        {{ pics.about }}</li>
+        </ul>
+        <div class="list-group">
+          <a href="{% url 'welcome' %}" class="list-group-item submit">Collection</a>
+          <a href="{% url 'pedit' %}" class="list-group-item submit">Account Settings</a>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+
+        <div class="card mt-4 gray">
+          <img class="card-img-top img-fluid" src="{% static 'images/pexels-photo-248510.jpeg' %}" alt="">
+            <div class="card-body">
+              <div class="player">
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <div class="pl">&sung;&nbsp;</div>
+                    <div class="artist"></div>
+                    <div class="cover"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-10">
+                  <audio controls id="mplay" src="/media/users/demo/a.mp3">
+                      Your browser does not support the audio element.
+                  </audio>
+                  </div>
+                  <div class="col-sm-1">
+                    <button class="rew btn btn-sm controls">&Lt;</button>
+                  </div>
+                  <div class="col-sm-1">
+                    <button class="fwd btn btn-sm controls">&Gt;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Play List
+          </div>
+          <div id="plist" class="card-body">
+          {% for music in musics %}
+            <p><strong class="text-muted">&sung;</strong><span>{{ music.document.name }}</span></p>
+            <button data-m="{{ music.document.url }}" class="btn btn-md orange song">Play</button>
+            <a href="{% url 'mdelete' pk=music.pk %}" class="btn btn-danger">Delete</a>
+            <hr>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'jquery/player.js' %}"></script>
+{% endblock %}

@@ -1,31 +1,36 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
 
-
-{% load staticfiles %}
-
-
-{% block jumbotron %}
-
-
-	
-        <div class="container">
-            <div class="contr">
-		<h1>Hi....  {{ user }}</h1>
-            	<h2>Your Watermarked Images</h2>		
-	    </div>
-	</div>
-	
-	<div class="container">
-		{% for img in watermkd %}
-		{% if img.dupimage %}
-		<a href = "{{ img.dupimage.url }}"><img src="{{ img.dupimage.url }}" width="800" height="600"></a>
-		{% endif %}
-		{% endfor %}
-	</div>
-
-        </div>
-    
-
-
-      
+{% block navbar %}
+    {% include 'navbar.html' %}
 {% endblock %}
+
+{% block main %}
+ <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+        <span class="d-none d-lg-block text-center mt-4">
+      </span>
+        <h1 class="text-center my-4">{{ user }}</h1>
+        <div class="list-group">
+          <a href="{% url 'gallery' %}" class="list-group-item submit">Gallery</a>
+          <a href="{% url 'wmarked' %}" class="list-group-item submit">WaterMarked</a>
+          <a href="{% url 'upload' %}" class="list-group-item submit">Upload Images</a>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+       {% for img in watermkd %}
+		{% if img.dupimage %}
+                    <div class="card mt-4 gray">
+                        <a href = "{{ img.dupimage.url }}"><img class="card-img-top img-fluid" src="{{ img.dupimage.url }}" alt=""></a>
+                    </div>
+        {% endif %}
+		{% endfor %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
+

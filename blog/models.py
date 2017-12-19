@@ -16,6 +16,11 @@ class Document(models.Model):
     y = models.IntegerField(null = True)
     color = models.CharField(max_length =200, null = True)
     fontsize = models.CharField(max_length =200, null = True)
+    email = models.EmailField(max_length =200, null = True)
+
+
+class Gall(models.Model):
+    galimage = models.ImageField(upload_to='galimage', null = True)
 
 
 

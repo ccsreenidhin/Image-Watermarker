@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+       {% include "navbar.html" %}							
+{% endblock %}	
+
+{% block main %}
+     <section id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">CARRY YOUR MUSIC WITH YOU</h1>
+          <p class="lead">SignUp Today, Upload and enjoy playing your collections!!!</p>
+          <ul class="list-unstyled">
+            <li><button type="button" class="btn btn-lg orange" data-toggle="modal" data-target="#login-register-form">SignIn/SignUp</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

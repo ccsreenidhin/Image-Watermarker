@@ -1,0 +1,84 @@
+{% extends 'inherit.html' %}
+{% load static %}
+
+{% block current %}
+							<li class="menu-item current-menu-item"><a href="{% url 'welcome' %}">Playlist</a></li>
+							<li class="menu-item"><a href="{% url 'profile' %}">Profile</a></li>
+							<li class="menu-item"><a href="{% url 'auth_logout' %}" class="button">Logout</a></li>
+{% endblock %}
+
+
+
+{% block content %}
+
+<h2 class="slide-title">Welcome   {{ user.username }}</h2>
+
+<img src="{{ pics.picture.url }}" width="300" height="200"/>
+<br>
+
+
+  <form method="post" action="{% url 'clear_database' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button type="submit" class="button small">
+    Clear Database
+    </button>
+  </form>
+
+<br/>
+<h2>Upload Music Files</h2>
+  <div style="margin-bottom: 20px;">
+    <button type="button" class="button js-upload-photos">
+      <span class="glyphicon glyphicon-cloud-upload"></span> Upload Music
+    </button>
+
+    <input id="fileupload" type="file" name="document" multiple
+           style="display: none;"
+           data-url="{% url 'welcome' %}"
+           data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+  </div>
+
+<h2 class="page-title">Your Collection</h2>
+
+  <table id="gallery" class="table table-bordered">
+    <thead>
+ 	<tr></tr>
+    </thead>
+    <tbody>
+      {% for music in musics %}
+	<tr><div id ="colln">
+		<h3 class="">{{ music.document.name }}</h3>
+		<a href="{{ music.document.url }}" class="button small primary">Listen to</a>
+	</div></tr>
+               
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Uploading...</h4>
+        </div>
+        <div class="modal-body">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+{# JQUERY FILE UPLOAD SCRIPTS #}
+  <script src="{% static 'js/fupload/vendor/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'js/fupload/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'js/fupload/jquery.fileupload.js' %}"></script>
+
+{# MUSIC PAGE SCRIPTS #}
+  <script src="{% static 'js/fupload/progress-bar-upload.js' %}"></script>
+{% endblock %}

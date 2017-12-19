@@ -1,28 +1,40 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
 
-{% block jumbotron %}
-	<div class="container">
-            <div class="contr">
-		<h1>Hi....  {{ user }}</h1>
-            			
-	    </div>
-	</div>
-    {% if documents %}
-        <ul>
-        {% for document in documents %}
-	{% if document.orimage.url %}
-                  <img class="padstyle" src="{{ document.orimage.url }}" width="600" height="400">
-	{% endif %}
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No documents.</p>
-    {% endif %}
+{% block main %}
+ <div class="container">
 
+    <div class="row">
 
+      <div class="col-lg-3">
+        <span class="d-none d-lg-block text-center mt-4">
+      </span>
+        <h1 class="text-center my-4">{{ user }}</h1>
+        <div class="list-group">
+          <a href="{% url 'gallery' %}" class="list-group-item submit">Gallery</a>
+          <a href="{% url 'wmarked' %}" class="list-group-item submit">WaterMarked</a>
+          <a href="{% url 'upload' %}" class="list-group-item submit">Upload Images</a>
+        </div>
+      </div>
 
-{% endblock %}      
-   
+      <div class="col-lg-9">
+       {% if documents %}
+            {% for document in documents %}
+                {% if document.orimage.url %}
+                    <div class="card mt-4 gray">
+                        <img class="card-img-top img-fluid" src="{{ document.orimage.url }}" alt="">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No documents.</p>
+        {% endif %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
+

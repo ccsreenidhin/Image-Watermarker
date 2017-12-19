@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+							{% include 'navbar.html' %}
+{% endblock %}	
+{% block main %}
+			<section id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Download the app here</h1>
+          <p class="lead">Play music on your systems</p>
+          <ul class="list-unstyled">
+            <li><button type="button" class="btn btn-lg orange" onclick="window.location.href='/download_app/musiana.tar.gz'">Download</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
